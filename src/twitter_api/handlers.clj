@@ -37,3 +37,33 @@
     {:status 200
      :headers {"Content-type" "application/json"}
      :body (json/write-str tweets)}))
+
+(defn put-twitter-handler
+  [req]
+  (let [id (:id (:params req)) 
+        tweet-json (:body req)
+        updated (try
+                   (d/update-tweet id tweet-json) 
+                   (catch Exception e
+                     (do
+                       (log/error e)
+                       false)))]
+    (log/info tweet-json)
+    {:status  (if updated 200 400)
+     :headers {"Content-Type" "text/html"}
+     :body    (when (not updated)
+                "Error updating tweet")}))
+
+(defn delete-twitter-handler
+  [req]
+  (let [id (:id (:params req)) 
+        deleted (try
+                   (d/delete-tweet id) 
+                   (catch Exception e
+                     (do
+                       (log/error e)
+                       false)))]
+    {:status  (if deleted 204 400)
+     :headers {"Content-Type" "text/html"}
+     :body    (when (not deleted)
+                "Error deleting tweet")}))

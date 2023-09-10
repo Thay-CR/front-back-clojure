@@ -9,3 +9,17 @@ values ((:id)::uuid , :body, :username, NOW())
 -- :doc Find tweets from a specific username
 select id, body, username from tweets
 where username = :username
+
+-- :name sql-update-tweet :! :m
+-- :doc Update a tweet in the database
+-- :param id :value
+-- :param tweet-json :json
+UPDATE tweets
+SET body = :body
+WHERE id = :id
+
+-- :name sql-delete-tweet :! :m
+-- :doc Delete a tweet from the database
+-- :param id :value
+DELETE FROM tweets
+WHERE id = :id

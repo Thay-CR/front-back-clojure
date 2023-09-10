@@ -17,3 +17,16 @@
   [username]
   (let [result (sql-search-tweets-by-username db {:username (str "@" username)})]
     (map #(assoc % :id (str (:id %))) result)))
+
+(defn update-tweet
+  "Update a tweet by ID"
+  [tweet-id updated-tweet]
+  (let [is-valid (v/validate-tweet updated-tweet)] 
+    (when is-valid
+      (sql-update-tweet db {:id (java.util.UUID/fromString tweet-id) :body  (get updated-tweet :body) }))))
+
+
+(defn delete-tweet
+  "Delete a tweet by ID"
+  [tweet-id]
+  (sql-delete-tweet db {:id  (java.util.UUID/fromString tweet-id)}))

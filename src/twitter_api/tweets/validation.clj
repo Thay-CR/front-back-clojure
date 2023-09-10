@@ -13,5 +13,6 @@
   (and
    (not (empty? tweet))
    (<= minimum-body-length (count (:body tweet)) maximum-body-length)
-   (= 0 (str/index-of (:username tweet) "@"))
-   (> (count (:username tweet)) 2)))
+  ;;  (= 0 (str/index-of (:username tweet) "@"))  TODO: aqui é utilizado só pro metodo post, otimizar
+  ;;  (> (count (:username tweet)) 2)
+   ))

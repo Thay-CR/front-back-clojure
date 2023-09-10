@@ -14,7 +14,9 @@
 
 (defroutes app-routes
   (POST "/tweets" [] (mj/wrap-json-body post-twitter-handler {:keywords? true :bigdecimals? true}))
-  (GET "/tweets" [] get-twitter-handler))
+  (GET "/tweets" [] get-twitter-handler)
+  (PUT "/tweets/:id" [] (mj/wrap-json-body put-twitter-handler {:keywords? true :bigdecimals? true}))
+  (DELETE "/tweets/:id" [] delete-twitter-handler))
 
 (defn -main
   "I don't do a whole lot ... yet."
