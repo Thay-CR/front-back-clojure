@@ -1,7 +1,0 @@
-POST http://localhost:3000/tweets
-Content-Type: application/json
-
-{
-  "body": "test",
-  "username" : "@filhodanuvem"
-}

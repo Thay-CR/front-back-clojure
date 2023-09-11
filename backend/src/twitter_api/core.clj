@@ -17,7 +17,7 @@
   (GET "/tweets" [] get-twitter-handler)
   (PUT "/tweets/:id" [] (mj/wrap-json-body put-twitter-handler {:keywords? true :bigdecimals? true}))
   (DELETE "/tweets/:id" [] delete-twitter-handler))
-  //TODO: fazer uma rota de cadastro, login com middleware de autenticação
+  ;TODO: fazer uma rota de cadastro, login com middleware de autenticação
 
 (defn -main
   "I don't do a whole lot ... yet."

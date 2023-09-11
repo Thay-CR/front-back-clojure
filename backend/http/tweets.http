@@ -1,0 +1,24 @@
+curl --location 'http://localhost:3000/tweets' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "body": "testando twitter",
+  "username" : "@thaynara"
+}'
+
+****************************************************************************************************************
+
+curl --location 'http://localhost:3000/tweets?username=thaycr'
+
+*****************************************************************************************************************
+
+curl --location --request PUT 'http://localhost:3000/tweets/2a8c7a52-e01e-412c-942c-ea14bfdf75c9' \
+--header 'Content-Type: application/json' \
+--data '{
+  "body": "testUpdated2"
+}'
+
+*****************************************************************************************************************
+
+curl --location --request DELETE 'http://localhost:3000/tweets/2a8c7a52-e01e-412c-942c-ea14bfdf75c9'
+
+*****************************************************************************************************************
