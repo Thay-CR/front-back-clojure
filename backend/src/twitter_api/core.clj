@@ -19,7 +19,8 @@
   (GET "/tweets" [] get-twitter-handler)
   (PUT "/tweets/:id" [] (mj/wrap-json-body put-twitter-handler {:keywords? true :bigdecimals? true}))
   (DELETE "/tweets/:id" [] delete-twitter-handler))
-  ;TODO: fazer uma rota de cadastro, login com middleware de autenticação
+  ;TODO: criptografar e descriptografar senha
+  ;TODO: fazer middleware de autenticação
   ;TODO: fazer rota para salvamento de arquivos 
   ;TODO: fazer envio de e-mail 
   ;TODO: conexão datomic 
