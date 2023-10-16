@@ -28,8 +28,6 @@
 (defn search-user-by-email-and-user-password
   "Find a user by email and user password"
   [email user-password]
-  (println "Email:" email)
-  (println "User Password:" user-password)
   (let [result (sql-search-user-by-email-and-user-password db {:email email, :user_password user-password})]
     (if (empty? result)
       nil
