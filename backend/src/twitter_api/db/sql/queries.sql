@@ -10,6 +10,14 @@ values ((:id)::uuid , :body, :username, NOW())
 insert into users (user_name, email, user_password)
 values (:user_name, :email, :user_password)
 
+
+-- A :result value of :n below will return affected rows:
+-- :name sql-search-user-by-email-and-user-password :?
+-- :doc Find users from a specific email and password
+SELECT * FROM users
+WHERE email = :email
+AND user_password = :user_password;
+
 -- A :result value of :n below will return affected rows:
 -- :name sql-search-tweets-by-username :?
 -- :doc Find tweets from a specific username

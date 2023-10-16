@@ -39,6 +39,25 @@
      :headers {"Content-Type" "text/html"}
      :body    (when (not saved)
                 "error or saving user")}))
+ 
+(defn post-login-handler
+  [req]
+  (let [user-json (:body req)
+        result (try
+                 (d/search-user-by-email-and-user-password
+                   (:email user-json) (:user_password user-json))
+                 (catch Exception e
+                   (do
+                     (log/error e)
+                     nil)))]
+    (log/info user-json)
+    (if result
+      {:status  200
+       :headers {"Content-Type" "text/html"}
+       :body    "Login successful"}
+      {:status  401 ; Use 401 Unauthorized for authentication failure
+       :headers {"Content-Type" "text/html"}
+       :body    "Login failed or user not found"})))
 
 (defn get-twitter-handler
   [req]

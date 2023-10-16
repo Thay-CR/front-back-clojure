@@ -14,6 +14,7 @@
 
 (defroutes app-routes
   (POST "/register" [] (mj/wrap-json-body post-register-handler {:keywords? true :bigdecimals? true}))
+  (POST "/login" [] (mj/wrap-json-body post-login-handler {:keywords? true :bigdecimals? true}))
   (POST "/tweets" [] (mj/wrap-json-body post-twitter-handler {:keywords? true :bigdecimals? true}))
   (GET "/tweets" [] get-twitter-handler)
   (PUT "/tweets/:id" [] (mj/wrap-json-body put-twitter-handler {:keywords? true :bigdecimals? true}))
