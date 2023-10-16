@@ -5,6 +5,12 @@ insert into tweets (id, body, username, created_at)
 values ((:id)::uuid , :body, :username, NOW())
 
 -- A :result value of :n below will return affected rows:
+-- :name sql-insert-user :! :m
+-- :doc Persist a user on datbase
+insert into users (user_name, email, user_password)
+values (:user_name, :email, :user_password)
+
+-- A :result value of :n below will return affected rows:
 -- :name sql-search-tweets-by-username :?
 -- :doc Find tweets from a specific username
 select id, body, username from tweets

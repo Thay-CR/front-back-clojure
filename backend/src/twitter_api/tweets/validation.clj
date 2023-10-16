@@ -16,3 +16,13 @@
   ;;  (= 0 (str/index-of (:username tweet) "@"))  TODO: aqui é utilizado só pro metodo post, otimizar
   ;;  (> (count (:username tweet)) 2)
    ))
+
+(defn validate-user
+  "validate if a user has all the required data"
+  [user]
+  (and
+   (not (empty? user))
+  ;;  (<= minimum-body-length (count (:body user)) maximum-body-length)
+  ;;  (= 0 (str/index-of (:username tweet) "@"))  TODO: aqui é utilizado só pro metodo post, otimizar
+  ;;  (> (count (:username tweet)) 2)
+   ))

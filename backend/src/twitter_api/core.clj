@@ -13,11 +13,19 @@
   (:gen-class))
 
 (defroutes app-routes
+  (POST "/register" [] (mj/wrap-json-body post-register-handler {:keywords? true :bigdecimals? true}))
   (POST "/tweets" [] (mj/wrap-json-body post-twitter-handler {:keywords? true :bigdecimals? true}))
   (GET "/tweets" [] get-twitter-handler)
   (PUT "/tweets/:id" [] (mj/wrap-json-body put-twitter-handler {:keywords? true :bigdecimals? true}))
   (DELETE "/tweets/:id" [] delete-twitter-handler))
   ;TODO: fazer uma rota de cadastro, login com middleware de autenticação
+  ;TODO: fazer rota para salvamento de arquivos 
+  ;TODO: fazer envio de e-mail 
+  ;TODO: conexão datomic 
+  ;TODO: consumo de API 
+  ;TODO: Kafka
+  ;TODO: Cache
+  ;TODO: Datadog
 
 (defn -main
   "I don't do a whole lot ... yet."

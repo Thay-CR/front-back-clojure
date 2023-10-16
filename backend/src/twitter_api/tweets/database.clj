@@ -12,6 +12,13 @@
     (when is-valid
       (sql-insert-tweet db (assoc tweet :id (java.util.UUID/randomUUID))))))
 
+(defn post-user
+  "Post a user"
+  [user]
+  (let [is-valid (v/validate-user user)]
+    (when is-valid
+      (sql-insert-user db user))))
+
 (defn search-tweets-by-username
   "Find tweets from a specific username"
   [username]

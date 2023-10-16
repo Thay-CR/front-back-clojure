@@ -25,6 +25,21 @@
      :body    (when (not saved)
                 "error or saving tweet")}))
 
+(defn post-register-handler
+  [req]
+  (let [user-json (:body req)
+        saved (try
+                (d/post-user user-json)
+                (catch Exception e
+                  (do
+                    (log/error e)
+                    false)))]
+    (log/info user-json)
+    {:status  (if saved 201 400)
+     :headers {"Content-Type" "text/html"}
+     :body    (when (not saved)
+                "error or saving user")}))
+
 (defn get-twitter-handler
   [req]
   (log/info req)
