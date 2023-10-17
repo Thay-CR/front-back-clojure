@@ -16,6 +16,7 @@
                  [funcool/clojure.jdbc "0.9.0"]
                  [org.clojure/data.json "0.2.6"]
                  [buddy/buddy-core "1.10.1"]
+                 [com.griffinscribe/clojure-aes "0.1.4"]
 ]
   :main ^:skip-aot twitter-api.core
   :uberjar-name "clojure-twitter-api"

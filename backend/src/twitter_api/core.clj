@@ -28,6 +28,8 @@
   ;TODO: Kafka
   ;TODO: Cache
   ;TODO: Datadog
+  ;TODO: testes
+  ;TODO: [environ "1.2.0"] variaveis de ambiente
 
 (defn -main
   "I don't do a whole lot ... yet."

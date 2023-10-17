@@ -1,7 +1,8 @@
 (ns twitter-api.tweets.database
   (:require [twitter-api.db.db :refer :all]
             [cheshire.core :as json]
-            [twitter-api.tweets.validation :as v])
+            [twitter-api.tweets.validation :as v]
+            [twitter-api.utils.password :as password])
   (:import java.util.UUID)
   (:gen-class))
 
@@ -17,7 +18,10 @@
   [user]
   (let [is-valid (v/validate-user user)]
     (when is-valid
-      (sql-insert-user db user))))
+      (let [encrypted-password (password/encrypt-message (:user_password user))]
+        (let [user-with-encrypted-password (assoc user :user_password encrypted-password)]
+          (sql-insert-user db user-with-encrypted-password))))))
+
 
 (defn search-tweets-by-username
   "Find tweets from a specific username"
